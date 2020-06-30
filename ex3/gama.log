@@ -1,0 +1,1 @@
+PLE;INIT;scoring=accuracy,regularize_length=True,max_pipeline_length=None,random_state=None,max_total_time=3600,max_eval_time=None,n_jobs=None,verbosity=30,keep_analysis_log=C:\Users\s138608\Documents\JADS\Thesis\Code\metalearning\ex3\gama.log,search_method=AsyncEA(),post_processing_method=BestFitPostProcessing();2020-06-30 11:09:20,355250;END!
