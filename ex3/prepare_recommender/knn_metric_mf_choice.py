@@ -153,14 +153,14 @@ def recommendations(mf, subsets, best):
     return recommendations
 
 if __name__ == "__main__":
-    mfc = pd.read_csv('../../data/all_mfc.csv', sep=';', index_col=[0])
-    mfr = pd.read_csv('../../data/all_mfr.csv', sep=';', index_col=[0])
+    mfc = pd.read_csv('../../data/ex3/all_mfc.csv', sep=';', index_col=[0])
+    mfr = pd.read_csv('../../data/ex3/all_mfr.csv', sep=';', index_col=[0])
 
     mfc = mfc.fillna(0)
     mfr = mfr.fillna(0)
 
-    bsc = pd.read_csv('../../data/best_C.csv', sep=';')
-    bsr = pd.read_csv('../../data/best_R.csv', sep=';')
+    bsc = pd.read_csv('../../data/ex3/best_C.csv', sep=';')
+    bsr = pd.read_csv('../../data/ex3/best_R.csv', sep=';')
 
     mtfs_gen = list(MFE().valid_metafeatures(groups="general"))
     mtfs_stat = list(MFE().valid_metafeatures(groups="statistical"))

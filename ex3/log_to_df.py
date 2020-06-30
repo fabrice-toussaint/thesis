@@ -207,13 +207,13 @@ def log_to_df_file(log_file):
 
 if __name__ == "__main__":
     #single example:
-    log_to_df_file("../data/a411.log")
+    log_to_df_file("../data/ex3/a411.log")
 
     #multiple example:
     classification, regression, clustering = get_dataset_ids(10000000) 
-    load_path = '../data/*.log'
-    filename_class = '../data/testc.csv'
-    filename_regr = '../data/testr.csv'
+    load_path = '../data/ex3/*.log'
+    filename_class = '../data/ex3/testc.csv'
+    filename_regr = '../data/ex3/testr.csv'
     df_class, df_regr = log_to_df(load_path, classification, regression)
 
     print(df_class, df_regr)

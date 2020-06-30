@@ -151,16 +151,16 @@ def predict_baseline(X, y, k, cat_ind, task, model, estimators, pairs, fixed_mfs
 
 
 if __name__ == "__main__":
-    with open('../data/rfcs.pkl', 'rb') as f:
+    with open('../data/ex1ex2/rfcs.pkl', 'rb') as f:
         estimators = pickle.load(f)
 
-    with open('../data/pcs.pkl', 'rb') as f:
+    with open('../data/ex1ex2/pcs.pkl', 'rb') as f:
         pairs = pickle.load(f)
 
-    with open('../data/clf_mf.pickle', 'rb') as f:
+    with open('../data/ex1ex2/clf_mf.pickle', 'rb') as f:
         clf_mf = pickle.load(f)
 
-    with open('../data/rgr_mf.pickle', 'rb') as f:
+    with open('../data/ex1ex2/rgr_mf.pickle', 'rb') as f:
         rgr_mf = pickle.load(f)
 
     X, y, cat_ind = get_oml_dataset(8)

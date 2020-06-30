@@ -156,7 +156,7 @@ def make_recommendations(mf, best, task, mfc_subset, mfr_subset, n=1, k=10, metr
     
     return get_pipeline_components(dist, ind, pt)
 
-def execute_recommendations(X, y, cat_ind, recommendations, task, n_jobs):
+def execute_recommendations(X, y, cat_ind, recommendations, task, n_jobs=1):
     ''' Executes the recommendations made by the nearest neighbor model based on
             a learning task and sets the number of jobs to n_jobs for the estimators
             and preprocessing algorithms.
@@ -281,12 +281,12 @@ def recommender(X, y, cat_ind, task, n=1, k=10, metric=None, n_jobs=1):
         X, y = impute(X, y, categorical, numeric, string, "median")
 
         if task == "classification":
-            best = prepare_best_scores('../data/best_C.csv')
+            best = prepare_best_scores('../data/ex3/best_C.csv')
             mfs = np.array(meta_features(X, y, groups=['complexity'], suppress=True)[1]).reshape(1, -1)
             recommendations = make_recommendations(mfs, best, "classification", mfc_subset, mfr_subset, n, k, metric=metric)
             scores = execute_recommendations(X, y, cat_ind, recommendations, "classification", n_jobs)
         else:
-            best = prepare_best_scores('../data/best_R.csv')
+            best = prepare_best_scores('../data/ex3/best_R.csv')
             mfs = np.array(meta_features(X, y, groups=['statistical', 'general'], suppress=True)[1]).reshape(1, -1)
             recommendations = make_recommendations(mfs, best, "regression", mfc_subset, mfr_subset, n, k, metric=metric)
             scores = execute_recommendations(X, y, cat_ind, recommendations, "regression", n_jobs)
@@ -311,17 +311,17 @@ if __name__ == "__main__":
                 'skewness.mean', 'skewness.sd', 'sparsity.mean', 'sparsity.sd', 
                 't_mean.mean', 't_mean.sd', 'var.mean', 'var.sd', 'w_lambda']
 
-    best_C = prepare_best_scores('../data/best_C.csv')
-    best_R = prepare_best_scores('../data/best_R.csv')
+    best_C = prepare_best_scores('../data/ex3/best_C.csv')
+    best_R = prepare_best_scores('../data/ex3/best_R.csv')
 
-    mfc = prepare_meta_features('../data/all_mfc.csv', best_C)
-    mfr = prepare_meta_features('../data/all_mfr.csv', best_R)
+    mfc = prepare_meta_features('../data/ex3/all_mfc.csv', best_C)
+    mfr = prepare_meta_features('../data/ex3/all_mfr.csv', best_R)
 
     mfc = mfc[mfc_subset]
     mfr = mfr[mfr_subset]
 
-    #mfc.to_csv('used_mfc.csv', sep=';')
-    #mfr.to_csv('used_mfr.csv', sep=';')
+    #mfc.to_csv('../data/ex3/used_mfc.csv', sep=';')
+    #mfr.to_csv('../data/ex3/used_mfr.csv', sep=';')
 
     pt_C = pt_best(best_C)
     pt_R = pt_best(best_C)

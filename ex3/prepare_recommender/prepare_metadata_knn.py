@@ -105,11 +105,11 @@ def best_scoring_knn(df, n, scoring):
     return best_scoring
 
 if __name__ == "__main__":
-    mfc = pd.read_csv('../../data/all_mfc.csv', sep=';', index_col=[0])
-    mfr = pd.read_csv('../../data/all_mfr.csv', sep=';', index_col=[0])
+    mfc = pd.read_csv('../../data/ex3/all_mfc.csv', sep=';', index_col=[0])
+    mfr = pd.read_csv('../../data/ex3/all_mfr.csv', sep=';', index_col=[0])
     
-    mdc = pd.read_csv('../../data/metadata_gama_C.csv', sep=',')
-    mdr = pd.read_csv('../../data/metadata_gama_R.csv', sep=',')
+    mdc = pd.read_csv('../../data/ex3/metadata_gama_C.csv', sep=',')
+    mdr = pd.read_csv('../../data/ex3/metadata_gama_R.csv', sep=',')
     
     mdc = prepare_metadata(mdc, 'classification')
     mdr = prepare_metadata(mdr, 'regression')
@@ -122,8 +122,8 @@ if __name__ == "__main__":
     merged_mdc = pd.merge(mdc, mfc, left_on='id', right_index=True).reset_index(drop=True)
     merged_mdr = pd.merge(mdr, mfr, left_on='id', right_index=True).reset_index(drop=True)
 
-    best_scoring_knn(merged_mdc, 50, 'accuracy').to_csv('../../data/best_C.csv', sep=';')
-    best_scoring_knn(merged_mdr, 50, 'r2').to_csv('../../data/best_R.csv', sep=';')
+    best_scoring_knn(merged_mdc, 50, 'accuracy').to_csv('../../data/ex3/best_C.csv', sep=';')
+    best_scoring_knn(merged_mdr, 50, 'r2').to_csv('../../data/ex3/best_R.csv', sep=';')
 
     print(merged_mdc.columns)
 

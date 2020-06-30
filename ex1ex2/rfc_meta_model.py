@@ -292,10 +292,10 @@ def build_and_score_meta_model(md, target):
     return est, score
 
 if __name__ == "__main__":
-    mclr = pd.read_csv('../data/mdll_c.csv', sep=';')
-    mrlr = pd.read_csv('../data/mdll_r.csv', sep=';')
-    mcrf = pd.read_csv('../data/mdrf_c.csv', sep=';')
-    mrrf = pd.read_csv('../data/mdrf_r.csv', sep=';')
+    mclr = pd.read_csv('../data/ex1ex2/mdll_c.csv', sep=';')
+    mrlr = pd.read_csv('../data/ex1ex2/mdll_r.csv', sep=';')
+    mcrf = pd.read_csv('../data/ex1ex2/mdrf_c.csv', sep=';')
+    mrrf = pd.read_csv('../data/ex1ex2/mdrf_r.csv', sep=';')
 
     pclr = processor_encoded_pair(mclr, ['processor_1', 'processor_2', 'processor_3'])
     prlr = processor_encoded_pair(mrlr, ['processor_1', 'processor_2', 'processor_3'])
@@ -307,9 +307,9 @@ if __name__ == "__main__":
     est_rfc, score_rfc = build_and_score_meta_model(mcrf, 'score_diff')
     est_rfr, score_rfr = build_and_score_meta_model(mrrf, 'score_diff')
 
-    with open('../data/rfcs.pkl', 'wb') as f:
+    with open('../data/ex1ex2/rfcs.pkl', 'wb') as f:
         pickle.dump([est_lrc, est_lrr, est_rfc, est_rfr], f)
 
-    with open('../data/pcs.pkl', 'wb') as f:
+    with open('../data/ex1ex2/pcs.pkl', 'wb') as f:
         pickle.dump([pclr, prlr, pcrf, prrf], f)
 
