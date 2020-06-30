@@ -230,7 +230,7 @@ def execute_recommendations(X, y, cat_ind, recommendations, task, n_jobs=1):
 
     return scores
 
-def recommender(X, y, cat_ind, task, n=1, k=10, metric=None, n_jobs=1):
+def recommender(X, y, cat_ind, task, n=1, k=10, metric=None, n_jobs=1, scoring = False):
         ''' Executes the recommender and returns both recommendations and scores
                 of the recommendation ran on the dataset (X and y).
 
@@ -284,14 +284,19 @@ def recommender(X, y, cat_ind, task, n=1, k=10, metric=None, n_jobs=1):
             best = prepare_best_scores('../data/ex3/best_C.csv')
             mfs = np.array(meta_features(X, y, groups=['complexity'], suppress=True)[1]).reshape(1, -1)
             recommendations = make_recommendations(mfs, best, "classification", mfc_subset, mfr_subset, n, k, metric=metric)
-            scores = execute_recommendations(X, y, cat_ind, recommendations, "classification", n_jobs)
+            if scoring == True:
+                scores = execute_recommendations(X, y, cat_ind, recommendations, "classification", n_jobs)
         else:
             best = prepare_best_scores('../data/ex3/best_R.csv')
             mfs = np.array(meta_features(X, y, groups=['statistical', 'general'], suppress=True)[1]).reshape(1, -1)
             recommendations = make_recommendations(mfs, best, "regression", mfc_subset, mfr_subset, n, k, metric=metric)
-            scores = execute_recommendations(X, y, cat_ind, recommendations, "regression", n_jobs)
+            if scoring == True:
+                scores = execute_recommendations(X, y, cat_ind, recommendations, "regression", n_jobs)
 
-        return recommendations, scores
+        if scoring == True:
+            return recommendations, scores
+        else:
+            return recommendations
 
 
 if __name__ == "__main__":
