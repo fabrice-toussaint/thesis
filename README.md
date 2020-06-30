@@ -60,7 +60,7 @@ recommendations_and_scoring = recommender(X, y, cat_ind, "classification")
 
 ## Acknowledgments
 
-* Pieter Gijsbers, creator of GAMA
 * Martijn Willemsen, first thesis supervisor
 * Joaquin Vanschoren, second thesis supervisor
 * Sako Arts, supervisor from [Wolfpack](https://wolfpackit.nl/)
+* Pieter Gijsbers, creator of GAMA
